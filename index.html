@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f613b">
+  <title>Agroforestry Tree Monitoring & Student Tracking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>🌳 AgroForestry</h1>
+      <p>Tree Monitoring & GPS-Based Student Tracking</p>
+    </div>
+    <button id="logoutBtn" class="secondary hidden">Log out</button>
+  </header>
+
+  <main class="wrap">
+    <section id="authPanel" class="panel auth-panel">
+      <h2>Sign in</h2>
+      <p class="muted">Use your registered account to access your dashboard.</p>
+      <form id="loginForm">
+        <label>Email<input id="loginEmail" type="email" required autocomplete="username"></label>
+        <label>Password<input id="loginPassword" type="password" required autocomplete="current-password"></label>
+        <button type="submit">Sign in</button>
+      </form>
+      <details>
+        <summary>Need an account?</summary>
+        <form id="registerForm" class="register-form">
+          <label>Full name<input id="regName" required></label>
+          <label>Email<input id="regEmail" type="email" required></label>
+          <label>Password (at least 6 characters)<input id="regPassword" type="password" minlength="6" required></label>
+          <label>Account role
+            <select id="regRole" required>
+              <option value="student">Student</option>
+              <option value="instructor">Instructor</option>
+              <option value="forestry">Forestry Personnel</option>
+              <option value="admin">Admin</option>
+            </select>
+          </label>
+          <button type="submit">Create account</button>
+        </form>
+        <p class="warning">For classroom testing only: role selection is open during registration. Before real deployment, restrict account creation and role assignment to an administrator using Firebase security rules or a trusted backend.</p>
+      </details>
+      <p id="authMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="appPanel" class="hidden">
+      <div class="welcome panel">
+        <div><span class="muted">Signed in as</span><h2 id="userName">User</h2><span id="userRole" class="badge"></span></div>
+        <p id="connectionStatus" class="muted">Connecting…</p>
+      </div>
+
+      <nav id="tabs" class="tabs"></nav>
+      <div id="dashboard" class="dashboard"></div>
+    </section>
+  </main>
+
+  <footer>Agroforestry Monitoring System · Location sharing requires user permission.</footer>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
